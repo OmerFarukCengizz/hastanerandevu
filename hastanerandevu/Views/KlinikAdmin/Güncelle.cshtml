@@ -1,0 +1,21 @@
+﻿@model hastanerandevu.Models.Entities.klinikler
+@{
+    ViewBag.Title = "Güncelle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@using (Html.BeginForm("Guncel", "KlinikAdmin", FormMethod.Post))
+{
+    <div class="form-group">
+        <label style="margin-top:20px;">Klinik ID</label>
+        @Html.TextBoxFor(m => m.KLINIKID, new { @class = "form-control w-50", style = "margin-top:20px;", @readonly = true })
+        <label style="margin-top:20px;">Hastane Adı</label>
+        @Html.DropDownListFor(m => m.hastaneler.HASTANEID, (List<SelectListItem>)ViewBag.klk, new { @class = "form-control w-50", style = "margin-top:20px;" })
+        <label style="margin-top:20px;">Klinik Adı</label>
+        @Html.TextBoxFor(m => m.KLINIKAD, new { @class = "form-control w-50", style = "margin-top:20px;" })
+        <div style="margin-top:20px;">
+            <button class="btn btn-warning">Klinik Güncelle</button>
+        </div>
+    </div>
+}
+
+

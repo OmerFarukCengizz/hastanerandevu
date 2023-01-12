@@ -1,0 +1,53 @@
+﻿@using hastanerandevu
+@model List<hastanerandevu.Models.Entities.randevular> 
+@{
+    ViewBag.Title = "Goster";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<style>
+    .doz {
+        display: flex;
+    }
+
+    .asd {
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .img {
+        width: 400px;
+        object-fit: contain;
+    }
+</style>
+<body>
+    <h2 style="text-align:center;margin-top:20px;">Randevularım</h2>
+    <div class="doz">
+        <table class="table table-bordered asd">
+            <tr>
+                <th>Randevu Türü</th>
+                <th>Hastane Adı</th>
+                <th>Klinik Adı</th>
+                <th>Doktor Adı</th>
+                <th>Randevu Tarihi</th>
+            </tr>
+
+            <tbody>
+                @foreach (var urn in Model)
+                {
+                    <tr>
+                        <td style="vertical-align: middle;">@urn.tur.RANDEVUAD</td>
+                        <td style="vertical-align: middle;">@urn.doktorlar.klinikler.hastaneler.HASTANEAD</td>
+                        <td style="vertical-align: middle;">@urn.doktorlar.klinikler.KLINIKAD</td>
+                        <td style="vertical-align: middle;">@urn.doktorlar.DOKTORAD</td>
+                        <td style="vertical-align: middle;color:red;">@urn.RANDEVUTARIH @urn.RANDEVUSAAT</td>
+                    </tr>
+                        
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</body>
+

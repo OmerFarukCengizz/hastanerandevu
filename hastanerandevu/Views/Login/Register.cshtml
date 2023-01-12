@@ -1,0 +1,145 @@
+﻿@model hastanerandevu.Models.Entities.user
+@{
+    ViewBag.Title = "Üye Ol";
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins';
+        }
+
+        .form-signup {
+            padding: 20px;
+            height: min-content;
+            margin-top: 20px;
+            border-radius: 12px;
+            background: #ffffff;
+        }
+
+        .input-form {
+            margin-bottom: 12px;
+        }
+
+        .submit {
+            font-size: 18px;
+            margin-top: 15px;
+        }
+
+        #image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 75px;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+   
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+
+        <fieldset>
+            @Html.AntiForgeryToken()
+
+
+            <div class="form-signup">
+                <img src="~/img/calendar.png" id="image" alt="Takvim logosu">
+                <h1 class="text-danger ">Randevu Alma Sistemi</h1>
+                <h2>Üye Ol</h2>
+                <form>
+                    <div class="form-group">
+                        <div class="input-form">
+                            <label for="TC">T.C. Kimlik Numarası:</label>
+                            <br>
+                            @Html.EditorFor(model => model.USERTC, new { htmlAttributes = new { @class = "form-control" } })
+                            <div class="text-danger">
+                                @Html.ValidationMessageFor(model => model.USERTC)
+                            </div>
+                        </div>
+                        <div class="input-form">
+                            <label for="ad">Adınız:</label>
+                            <br>
+                            @Html.EditorFor(model => model.USERAD, new { htmlAttributes = new { @class = "form-control" } })
+                            <div class="text-danger">
+                                @Html.ValidationMessageFor(model => model.USERAD)
+                            </div>
+                        </div>
+                        <div class="input-form">
+                            <label for="soyad">Soyadınız:</label>
+                            <br>
+                            @Html.EditorFor(model => model.USERSOYAD, new { htmlAttributes = new { @class = "form-control" } })
+                            <div class="text-danger">
+                                @Html.ValidationMessageFor(model => model.USERSOYAD)
+                            </div>
+                        </div>
+                        <div class="input-form">
+                            <label for="birthday">Doğum Tarihiniz:</label>
+                            <br>
+                            @Html.EditorFor(model => model.USERDOGUM, new { htmlAttributes = new { @class = "form-control" } })
+                            <div class="text-danger">
+                                @Html.ValidationMessageFor(model => model.USERDOGUM)
+                            </div>
+                        </div>
+                        <div class="input-form">
+                            <label for="sifre">Şifrenizi Giriniz:</label>
+                            <br>
+                            @Html.EditorFor(model => model.USERSİFRE, new { htmlAttributes = new { @class = "form-control" } })
+                            <div class="text-danger">
+                                @Html.ValidationMessageFor(model => model.USERSİFRE)
+                            </div>
+                        </div>
+                        <div class="input-form">
+                            <label for="sifre">Şifrenizi Tekrar Giriniz:</label>
+                            <br>
+                            @Html.EditorFor(model => model.USERRESİFRE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.USERRESİFRE)
+                        </div>
+                    </div>
+                    <input class="submit btn btn-success w-100 text-bg-success" type="submit" value="Kaydol">
+                    @if (ViewBag.Message != null)
+                    {
+
+                        <div class="bg-light text-success">
+                            @ViewBag.Message
+                        </div>
+                        <a href="/Login/Login" style="text-decoration:none;">Giriş Sayfasına Geri Dön</a>
+                    }
+                    @if (ViewBag.DuplicateMessage != null)
+                    {
+                        <div class="bg-light text-danger">
+                            @ViewBag.DuplicateMessage
+                        </div>
+                    }
+                </form>
+
+            </div>
+        </fieldset>
+    }
+</body>
+</html>
+

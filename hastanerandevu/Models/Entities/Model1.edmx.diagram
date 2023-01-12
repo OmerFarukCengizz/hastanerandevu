@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aa29ed9e6924468290f9b88788a34ab2" Name="Diagram1">
+        <EntityTypeShape EntityType="hastaneModel.doktorlar" Width="1.5" PointX="9.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.hastaneler" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.ilceler" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.klinikler" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.personel" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.randevular" Width="1.5" PointX="14.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.sehirler" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.tur" Width="1.5" PointX="12" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.user" Width="1.5" PointX="12" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="hastaneModel.FK_doktorlar_hastaneler" ManuallyRouted="false" />
+        <AssociationConnector Association="hastaneModel.FK_doktorlar_klinikler" ManuallyRouted="false" />
+        <AssociationConnector Association="hastaneModel.FK_randevular_doktorlar" ManuallyRouted="false" />
+        <AssociationConnector Association="hastaneModel.FK_user_doktorlar" ManuallyRouted="false" />
+        <AssociationConnector Association="hastaneModel.FK_hastaneler_ilceler" ManuallyRouted="false" />
+        <AssociationConnector Association="hastaneModel.FK_hastaneler_sehirler" ManuallyRouted="false" />
+        <AssociationConnector Association="hastaneModel.FK_klinikler_hastaneler" ManuallyRouted="false" />
+        <AssociationConnector Association="hastaneModel.FK_ilceler_sehirler" ManuallyRouted="false" />
+        <AssociationConnector Association="hastaneModel.FK_randevular_tur" ManuallyRouted="false" />
+        <AssociationConnector Association="hastaneModel.FK_randevular_user" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

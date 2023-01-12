@@ -1,0 +1,83 @@
+﻿@using hastanerandevu.Models.Entities
+
+@model List<hastaneler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <Title>
+        Randevu Alma Sayfası
+    </Title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins';
+        }
+
+        #outer {
+            width: 100%;
+            text-align: center;
+        }
+
+        .inner {
+            display: inline-block;
+            margin-top: 50px;
+        }
+
+        .inn {
+            margin-left: 100px;
+        }
+
+        span {
+            margin-left: 5px;
+            font-size: 22px;
+        }
+
+        .a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .tabss{
+            margin-top:75px;
+        }
+        .asd {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div class="inner"><a href="/Home/AsiRandevu" class="btn btn-secondary btn-lg"><i class="fa fa-syringe a" style="font-size:48px;"></i><span> Aşı Randevusu Al</span></a></div>
+        <div class="inner inn"><a href="/Home/Cascading" class="btn btn-danger btn-lg"><i class="fa fa-hospital a" style="font-size:48px;"></i><span> Hastane Randevusu Al</span></a></div>
+        <div class="inner inn"><a href="/Home/AileHekimi" class="btn btn-info btn-lg text-light"><i class="fa fa-user-md a" style="font-size:48px;"></i><span> Aile Hekimi Randevusu Al</span></a></div>
+    </div>
+    <ul class="nav nav-tabs tabss">
+        <li class="nav-item">
+            <a class="nav-link active " aria-current="page">Hastanelerimiz</a>
+        </li>
+    </ul>
+    <div>
+        <table class="table table-bordered asd">
+            <tbody>
+                @foreach (var hstn in Model)
+                {
+                    <tr>
+                        <td>@hstn.sehirler.SEHIRAD</td>
+                        <td>@hstn.ilceler.ILCEAD</td>
+                        <th>@hstn.HASTANEAD</th>
+                    </tr>
+                }
+                </tbody>
+            </table>
+         </div>
+</body>
+</html>

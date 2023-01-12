@@ -1,0 +1,33 @@
+﻿@using hastanerandevu.Models.Entities
+@model List<doktorlar>
+@{
+    ViewBag.Title = "Arama";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .doz {
+        display: flex;
+    }
+
+    .asd {
+        margin-top: 75px;
+        
+    }
+</style>
+<a href="/Home/Cascading" class="fa-solid fa-chevron-left" style="margin-top: 50px;text-decoration:none; color:black;"></a><a href="/Home/Index" style="text-decoration:none; font-size:24px;font-weight:500; font-family:'Poppins'; margin-top:50px; color:black;"> Hastane Listesi</a>
+<div class="doz">
+    <table class="table  asd">
+        <tbody>
+            @foreach (var hstn in Model)
+            {
+                <tr>
+                    <th><i class="fa-solid fa-user-doctor"></i>  @hstn.DOKTORAD</th>
+                    <td><i style="margin-left:25px;"class="fa-solid fa-hospital"></i>  @hstn.hastaneler.HASTANEAD</td>
+                    <td><i class="fa-solid fa-building"></i>  @hstn.klinikler.KLINIKAD</td>
+                    <td><a href="/Home/Doktor/@hstn.DOKTORID" class="btn btn-danger">Randevu Al</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

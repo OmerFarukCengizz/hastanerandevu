@@ -1,0 +1,55 @@
+﻿@using hastanerandevu.Models.Entities
+@model  List<hastaneler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<style>
+    .doz {
+        display: flex;
+    }
+
+    .asd {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .buton {
+        margin-top: 20px;
+        margin-left: 50px;
+    }
+</style>
+<body>
+    <a href="/AdminP/Ekleme" class="btn btn-success buton">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 18 18">
+            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"></path>
+        </svg>Yeni Hastane Ekle
+    </a>
+
+    <div class="doz">
+        <table class="table table-hover asd">
+            <tr>
+                <th>Hastane ID</th>
+                <th>İl Adı</th>
+                <th>İlçe Adı</th>
+                <th>Hastane Adı</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+            </tr>
+            <tbody>
+                @foreach (var hstn in Model)
+                {
+                    <tr>
+                        <th>@hstn.HASTANEID</th>
+                        <td>@hstn.sehirler.SEHIRAD</td>
+                        <td>@hstn.ilceler.ILCEAD</td>
+                        <td>@hstn.HASTANEAD</td>
+                        <td>@Html.ActionLink("Sil", "Sil", new { id = @hstn.HASTANEID }, new { @class = "btn btn-danger w-50", onclick = "return confirm('Gerçekten Silmek İstiyor musunuz?')" }) </td>
+                        <td><a href="/AdminP/Güncelle/@hstn.HASTANEID" class="btn btn-primary">Güncelle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>

@@ -1,0 +1,10 @@
+﻿@model hastanerandevu.Models.Entities.ilceler
+
+<option value="">---İlçe Seçiniz---</option>
+@if (ViewBag.Ilcelist != null)
+            {
+                foreach(var item in ViewBag.Ilcelist)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            }

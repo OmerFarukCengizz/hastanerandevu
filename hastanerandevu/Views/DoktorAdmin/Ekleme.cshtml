@@ -1,0 +1,65 @@
+﻿@model hastanerandevu.Models.Entities.doktorlar
+@{
+    ViewBag.Title = "Ekleme";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js" integrity="sha512-YHQNqPhxuCY2ddskIbDlZfwY6Vx3L3w9WRbyJCY81xpqLmrM6rL2+LocBgeVHwGY9SXYfQWJ+lcEWx1fKS2s8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(document).ready(function () {
+       
+        $("#HASTANEID").change(function () {
+            var klinid = $(this).val();
+            var id = $('#HASTANEID').val();
+            if (id) {
+                $('#KLINIKID').prop("disabled", false);
+            } else {
+                $('#KLINIKID').prop("disabled", true);
+            }
+            debugger
+            $.ajax({
+                type: "post",
+                url: "/Home/klinikgetir?HASTANEID=" + klinid,
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#KLINIKID").empty();
+                    $("#KLINIKID").append(response);
+                }
+            })
+        })
+        $(function () {
+            $('#KLINIKID').change(function () {
+
+                document.getElementById("button").style.display = "block";
+
+            });
+        });
+    })
+</script>
+<div class="container" style="margin-top: 20px; align-items: center; justify-content: center;">
+    @using (Html.BeginForm("Ekleme", "DoktorAdmin", FormMethod.Post))
+    {
+        <div class="form-group">
+            <div class="card-body p-2">
+                <div class="d-flex flex-row justify-content-center">
+                    <div style="margin: auto;">
+                        <div class="form-group text-center">
+                            @if (ViewBag.HastaList != null)
+                            {
+                                <label style="margin-top: 20px; text-align: center;">Hastaneler</label>
+                                @Html.DropDownListFor(m => m.HASTANEID, ViewBag.HastaList as SelectList, "---Hastane Seçiniz---", new { @class = "form-control", style = "margin-top:20px; text-align:center;width:300px;" })
+                            }
+                                <label style="margin-top: 20px; text-align: center;">Klinikler</label>
+                                @Html.DropDownListFor(m => m.KLINIKID, new SelectList(""), "---Klinik Seçiniz---", new { @class = "form-control", disabled = "disabled", style = "margin-top:20px; text-align:center;width:300px;" })
+                                <label style="margin-top:20px;">Doktor Adı</label>
+                                <input type="text" name="DOKTORAD" class="form-control" style="width:300px;margin-top:20px;" />
+                                <div style="margin-top:20px;">
+                                    <button class="btn btn-info">Doktor Ekle</button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            }
+        </div>

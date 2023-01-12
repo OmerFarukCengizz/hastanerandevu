@@ -1,0 +1,30 @@
+﻿@model hastanerandevu.Models.Entities.klinikler
+@{
+    ViewBag.Title = "Ekleme";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="container">
+    @using (Html.BeginForm("Ekleme", "KlinikAdmin", FormMethod.Post))
+    {
+        <div class="card-body p-2">
+            <div class="d-flex flex-row justify-content-center">
+                <div style="margin: auto;">
+                    <div class="form-group text-center">
+                   
+                        <label style="margin-top: 20px; text-align: center;">Hastaneler</label>
+                        @Html.DropDownListFor(m => m.HASTANEID, (List<SelectListItem>)ViewBag.klk, new { @class = "form-control", style = "margin-top:20px; text-align:center;width:300px;" })
+                        <label style="margin-top:20px;"> Klinik Adı </label>
+                        @Html.TextBoxFor(m => m.KLINIKAD, new { @class = "form-control", style = "margin-top:20px;width:300px;" })
+
+                        <div style="margin-top:20px;">
+                            <button class="btn btn-warning">Klinik Ekle</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
