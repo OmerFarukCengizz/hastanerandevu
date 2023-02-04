@@ -1,4 +1,4 @@
-# hastanerandevu
+# ASP.NET MVC Hastane Randevu Alma Sitesi
 Projem hastanelerden randevu alma sitesidir. Kaydını yapan bir kullanıcı, ardından 
 giriş yaptıktan sonra hastane doktoru, aşı ve aile hekimi randevuları alabilmektedir. 
 Doktor randevusu için istediği şehir, ilçe, hastane ve klinik bilgisini seçtikten sonra
